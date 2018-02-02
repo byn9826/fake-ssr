@@ -1,10 +1,6 @@
 <?php
-use Jaybizzle\CrawlerDetect\CrawlerDetect;
-// wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-// sudo dpkg -i google-chrome-stable_current_amd64.deb
-// sudo apt-get -f install
-
 namespace byn9826\FakeSSR;
+use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class FakeSSR {
 	
@@ -43,7 +39,7 @@ class FakeSSR {
 		$cmd .= $address . '; echo $?';
 		$content = shell_exec($cmd);
 		$content = substr($content, 0, -2);
-		$dom = new DOMDocument();
+		$dom = new \DOMDocument();
 		$dom->loadHTML($content);
 		$script = $dom->getElementsByTagName('script');
 		$remove = [];

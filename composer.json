@@ -1,10 +1,12 @@
 {
     "name": "byn9826/fake-ssr",
-    "description": "Feed web crawler robots on rendered HTML by server",
+    "description": "Feed web crawler robots on rendered HTML by PHP",
     "type": "library",
     "require": {
         "jaybizzle/crawler-detect": "^1.2"
     },
+    "keywords": ["SSR", "server side render", "crawler detector", "php render vue", "php render react", "php SSR"],
+    "homepage": "https://github.com/byn9826/fake-ssr",
     "license": "MIT",
     "authors": [
         {
@@ -14,7 +16,7 @@
     ],
     "autoload":{
         "psr-4":{
-             "FakeSSR\\":"/src/FakeSSR"
+             "byn9826\\FakeSSR\\": "src/"
          }
     }
 }
