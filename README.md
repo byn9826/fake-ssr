@@ -1,6 +1,7 @@
 Fake SSR
 --
-Feed web crawler robots on rendered HTML by PHP
+Feed web crawlers on rendered HTML for JavaScript rendering pages.  
+Users will visit the page normally while web crawlers will directly get already rendered HTML.  
 
 Prerequisite
 --
@@ -13,7 +14,7 @@ sudo apt-get -f install
 Installation
 --
 ```
-composer require "byn9826/fake-ssr:*"
+composer require "byn9826/fake-ssr:dev-master"
 ```
 Usage
 --
@@ -42,4 +43,12 @@ class TestController extends ControllerBase {
 
 }
 ```
-Users will visit the normal page while web crawlers will get already rendered HTML.
+
+Before fake ssr  
+--
+<img src="https://github.com/byn9826/fake-ssr/blob/master/~legend/1.JPG?raw=true" width="200px" />  
+  
+After fake ssr  
+--
+<img src="https://github.com/byn9826/fake-ssr/blob/master/~legend/2.JPG?raw=true" width="200px" />  
+

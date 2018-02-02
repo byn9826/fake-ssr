@@ -4,7 +4,7 @@ use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 class FakeSSR {
 	
-	public static function detect($address, $expire = false, $cache_path = null) {
+	public static function detect($address, $cache_path = null, $expire = false) {
 		$CrawlerDetect = new CrawlerDetect;
     if($CrawlerDetect->isCrawler()) {
 			$html = self::render($address, $expire, $cache_path);

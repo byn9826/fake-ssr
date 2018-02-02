@@ -1,6 +1,6 @@
 {
     "name": "byn9826/fake-ssr",
-    "description": "Feed web crawler robots on rendered HTML by PHP",
+    "description": "Feed web crawlers on rendered HTML for JavaScript rendering pages",
     "type": "library",
     "require": {
         "jaybizzle/crawler-detect": "^1.2"
