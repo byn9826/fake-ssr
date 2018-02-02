@@ -46,9 +46,8 @@ class TestController extends ControllerBase {
 
 Before fake ssr  
 --
-<img src="https://github.com/byn9826/fake-ssr/blob/master/~legend/1.JPG?raw=true" width="200px" />  
-  
+![before fake ssr](https://github.com/byn9826/fake-ssr/blob/master/~legend/1.jpg?raw=true)
+	
 After fake ssr  
 --
-<img src="https://github.com/byn9826/fake-ssr/blob/master/~legend/2.JPG?raw=true" width="200px" />  
-
+![after fake ssr](https://github.com/byn9826/fake-ssr/blob/master/~legend/2.jpg?raw=true)
