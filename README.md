@@ -26,20 +26,20 @@ class TestController extends ControllerBase {
   public function indexAction() {
 	
     //The matched url for this action
-		$url = 'https://smilings.me'; 
-		//The folder used to cache rendered HTML
-			//Could be null if $expire is 0
-		$cache_folder = dirname(__dir__) . '/.ssr';  
-		//Cache expiring time. 
-			//Default false: never expire. 0 means never use cache. 
-			//1 means cache for 1 min, 10 means cache for 10 min, 100 means cache for 100 min, etc
-		$expire = 0;
-    FakeSSR::detect($url, $cache_folder,0);
+    $url = 'https://smilings.me'; 
+    //The folder used to cache rendered HTML, could be null if $expire is 0
+    $cache_folder = dirname(__dir__) . '/.ssr';  
+    //Cache expiring time. Default value is false, means never expire. 0 means never use cache. 
+    //1 means cache for 1 min, 10 means cache for 10 min, 100 means cache for 100 min, etc
+    $expire = 0;
+    
+    FakeSSR::detect($url, $cache_folder, $expire);
 
-		...
-		//Don't need to modify any existing codes
+    ...
+    //Don't need to modify any existing codes
 		
   }
 
 }
 ```
+Users will visit the normal page while web crawlers will get already rendered HTML.
