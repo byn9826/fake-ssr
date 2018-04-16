@@ -18,26 +18,29 @@ composer require "byn9826/fake-ssr:dev-master"
 ```
 Usage
 --
-In any controller, in any action you need to fool web crawlers.
+In default controller default action (Handle all the traffic here).  
 ```
 use byn9826\FakeSSR\FakeSSR;
 
-class TestController extends ControllerBase {
+class IndexController extends ControllerBase {
 
   public function indexAction() {
-	
-    //The matched url for this action
-    $url = 'https://smilings.me'; 
-    //The folder used to cache rendered HTML, could be null if $expire is 0
+    //$cache_folder is the location of the folder used to cache rendered HTML  
+		//make sure www-data could execute in this folder    
+		//$cache_folder could be null if $expire is 0  
     $cache_folder = dirname(__dir__) . '/.ssr';  
-    //Cache expiring time. Default value is false, means never expire. 0 means never use cache. 
+		  
+    //$expire is the cache expiring time. 
+		//Default value is false, means never expire.   
+		//0 means never use cache.   
     //1 means cache for 1 min, 10 means cache for 10 min, 100 means cache for 100 min, etc
     $expire = 0;
     
     FakeSSR::detect($url, $cache_folder, $expire);
 
     ...
-    //Don't need to modify any existing codes
+    //Render the index.html for the single page application  
+		include(dirname(__dir__) . '/frontend/index.html');
 		
   }
 

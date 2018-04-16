@@ -14,12 +14,14 @@ class FakeSSR {
 	}
 	
 	private static function render($expire, $cache_path) {
+		$address = isset($_SERVER['HTTPS']) ? "https" : "http";
+		$address .= '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		if ($expire === 0) {
-			return self::crawl($expire, null);
+			return self::crawl($expire, null, $address);
 		} else if ($expire !== 0) {
 			$file_path = $cache_path . '/__' . str_replace('/', '', $address) . '__.html';
 			return self::check($file_path, $expire) ? 
-				file_get_contents($file_path) : self::crawl($expire, $file_path); 
+				file_get_contents($file_path) : self::crawl($expire, $file_path, $address); 
 		}
 	}
 	
@@ -33,9 +35,7 @@ class FakeSSR {
 		return time() < filemtime($file_path) + $expire * 60;
 	}
 	
-	public static function crawl($expire, $file_path) {
-		$address = isset($_SERVER['HTTPS']) ? "https" : "http";
-		$address .= '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	public static function crawl($expire, $file_path, $address) {
 		$cmd = 'google-chrome --headless --disable-gpu --dump-dom --no-sandbox --window-size=1280,1696 ';
 		$cmd .= $address . '; echo $?';
 		$content = shell_exec($cmd);
@@ -52,7 +52,7 @@ class FakeSSR {
 		}
 		$html = $dom->saveHTML();
 		if ($expire !== 0) {
-			file_put_contents($file_path, $html);
+			$result = file_put_contents($file_path, $html);
 		}
 		return $html;
 	}
