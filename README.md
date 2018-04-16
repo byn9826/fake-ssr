@@ -1,6 +1,6 @@
 Fake SSR
 --
-Feed web crawlers on rendered HTML for JavaScript rendering pages.  
+Feed web crawlers on rendered HTML for JavaScript rendering pages/Single Page Application.  
 Users will visit the page normally while web crawlers will directly get already rendered HTML.  
 
 Prerequisite
@@ -30,13 +30,13 @@ class IndexController extends ControllerBase {
     //$cache_folder could be null if $expire is 0  
     $cache_folder = dirname(__dir__) . '/.ssr';  
 		  
-    //$expire is the cache expiring time. 
+    //$expire is the cache expiring time.   
     //Default value is false, means never expire.   
     //0 means never use cache.   
-    //1 means cache for 1 min, 10 means cache for 10 min, 100 means cache for 100 min, etc
-    $expire = 0;
+    //1 means cache for 1 min, 10 means cache for 10 min, 100 means cache for 100 min, etc  
+    $expire = 0;  
     
-    FakeSSR::detect($url, $cache_folder, $expire);
+    FakeSSR::detect($cache_folder, $expire);  
 
     //Render the index.html for the single page application  
     include(dirname(__dir__) . '/frontend/index.html');
