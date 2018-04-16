@@ -26,21 +26,20 @@ class IndexController extends ControllerBase {
 
   public function indexAction() {
     //$cache_folder is the location of the folder used to cache rendered HTML  
-		//make sure www-data could execute in this folder    
-		//$cache_folder could be null if $expire is 0  
+    //make sure www-data could execute in this folder    
+    //$cache_folder could be null if $expire is 0  
     $cache_folder = dirname(__dir__) . '/.ssr';  
 		  
     //$expire is the cache expiring time. 
-		//Default value is false, means never expire.   
-		//0 means never use cache.   
+    //Default value is false, means never expire.   
+    //0 means never use cache.   
     //1 means cache for 1 min, 10 means cache for 10 min, 100 means cache for 100 min, etc
     $expire = 0;
     
     FakeSSR::detect($url, $cache_folder, $expire);
 
-    ...
     //Render the index.html for the single page application  
-		include(dirname(__dir__) . '/frontend/index.html');
+    include(dirname(__dir__) . '/frontend/index.html');
 		
   }
 
